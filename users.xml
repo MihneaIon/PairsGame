@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <User>
+    <Name>Mihnea</Name>
+    <Avatar>pack://application:,,,/Pairs;component/Resources/img0.png</Avatar>
+  </User>
+  <User>
+    <Name>Dan</Name>
+    <Avatar>pack://application:,,,/Pairs;component/Resources/img2.png</Avatar>
+  </User>
+</ArrayOfUser>

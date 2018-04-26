@@ -1,0 +1,38 @@
+﻿<Window x:Class="Pairs.Views.Pairs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pairs.Views"
+        xmlns:ViewModel="clr-namespace:Pairs.ViewModel"
+        mc:Ignorable="d"
+        Title="Pairs" Height="900" Width="1200">
+
+    <Window.DataContext>
+        <ViewModel:CardViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate x:Key="TheBtn">
+            <Button Height="200" Width="200" Margin="4,4,4,4" FontSize="20" Content="{Binding}" Command="{Binding Path=DataContext.CardPress, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" >
+                <Button.Background>
+                    <ImageBrush ImageSource="{Binding Cover,UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" TileMode="None" />
+                </Button.Background>
+            </Button>
+        </DataTemplate>
+        <DataTemplate x:Key="TheGrid">
+            <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource TheBtn}" Height="210" Width="Auto" Margin="241,0,-61,0">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <ItemsControl x:Name="grid" ItemTemplate="{DynamicResource TheGrid}" ItemsSource="{Binding Cards}" Margin="-49,10,69,-10"/>
+        <TextBox x:Name="Seconds" Text="{Binding TimeInSeconds,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" HorizontalAlignment="Left" Height="224" Margin="10,155,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="146" FontSize="48"/>
+    </Grid>
+</Window>
